@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div>
+  <h1 class="h3">Your watched list</h1>
+  <div>Manage your watched list</div>
+  <hr />
+{% if watchedlist %}
+{% for m in watchedlist %}
+    <div class="col-sm-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{m.image}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{m.title}} </h5>
+              <h6 class="card-subtitle mb-2 text-muted">Rating - {{m.rating}}</h6>
+              <p class="card-text">
+                {% for key, value in m.cast.items %}
+                  {{key}}
+                {% endfor %}
+              </p>
+              <a href="/{{m.id}}" class="btn btn-primary">{{m.year}}</a>
+              <a type="button" class="btn btn-primary fw500 btn-sm" href="{% url 'main:user_watchedlist' m.id %}">Remove from watched list</a>
+            </div>
+        </div>
+    </div>
+    
+  
+{% endfor %}
+{% else %}
+<p class="card-text">No movies have been added to your watched list yet</p>
+{% endif %}
+</div>
+{% endblock %}

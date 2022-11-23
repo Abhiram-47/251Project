@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+
+{% block content %}
+<form method="post"  action="/create/" class="form-group">
+   {% csrf_token %}
+   <div class="input-grouup mb-3">
+    <div class="input-group-prepend">
+        <button type="submit"  name="save" class="btn btn-success">create new</button>
+        {{form.name}}
+    </div>
+   </div>
+</form>
+{% endblock %}

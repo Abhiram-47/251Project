@@ -1,0 +1,12 @@
+{% extends 'main/blank.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{form | crispy}}
+    <button type="submit" class="btn btn-success">SIGN UP</button>
+    <p>Registered User? Login <a href="/login"> here</p>
+    </form>
+</form>
+{% endblock %}

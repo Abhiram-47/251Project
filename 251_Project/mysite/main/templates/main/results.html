@@ -1,0 +1,53 @@
+{% extends 'main/prac.html' %}
+
+{% block content %}
+<h2>NEW SEARCH</h2>
+<h2 style='text-align: center'>{{searched | title}}</h2>
+<!-- <div class="card-group"> -->
+<div class="row">
+    
+{% for m in movie_obj %}
+    <div class="col-sm-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{m.image}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{m.title}} </h5>
+              <h6 class="card-subtitle mb-2 text-muted">Rating - {{m.rating}}</h6>
+              <p class="card-text">
+                {% for key, value in m.cast.items %}
+                  {{key}}
+                {% endfor %}
+              </p>
+              <a href="/{{m.id}}" class="btn btn-primary">{{m.year}}</a>
+            </div>
+        </div>
+    </div>
+    
+        <!-- <div class="card" style="width: 100rem;"> 
+          <img class="card-img-top" src="{{m.3}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{m.0}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Rating - {{m.4}}</h6>
+            <p class="card-text">{{m.2}}</p>
+            <a href="{{m.1}}" class="btn btn-primary">{{m.5}}</a>
+          </div>
+        </div> -->
+  
+        {% endfor %}   
+{% for s in shows_list %}
+    <div class="col-sm-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{s.3}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{s.0}} </h5>
+              <h6 class="card-subtitle mb-2 text-muted">Rating - {{s.4}}</h6>
+              <p class="card-text">{{s.2}}</p>
+              <a href="/{{s.6}}" class="btn btn-primary">{{s.5}}</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

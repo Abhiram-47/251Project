@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>251project</title>
+    </head>
+
+<body>
+    <h1>{{movie.title}}</h1>
+    <img src="{{movie.image}}">
+    <h2>Movieinfo</h2>
+   <ul class="Movieinfo">
+    <li>
+        <div>plot:</div>
+        <div>{{movie.plot}}</div>
+    </li>
+    <li>
+        <div>language:</div>
+        <div>{{movie.language}}</div>
+    </li>
+    <li>
+        <div>Director:</div>
+        <div>{{movie.Director}}</div>
+    </li>
+    <li>
+        <div>Producer:</div>
+        <div>{{movie.Producer}}</div>
+    </li>
+    <li>
+        <div>Writer:</div>
+        <div>{{movie.Writer}}</div>
+    </li>
+    <li>
+        <div>year:</div>
+        <div>{{movie.year}}</div>
+    </li>
+    <li>
+        <div>duration:</div>
+        <div>{{movie.duration}}</div>
+    </li>
+    <li>
+        <div>genre:</div>
+        <div>{{movie.genre}}</div>
+    </li>
+    <li>
+        <div>rating:</div>
+        <div>{{movie.rating}}</div>
+    </li>
+   </ul>
+   <h2>CAST AND CREW</h2>
+   <table>
+    {% for key,value in movie.cast.items %}
+        <tr>
+            <td>{{key}}--</td><td>{{value}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <h2>Where To Watch</h2>
+    <!-- {% if movie.platform is null %}
+    <h3>NO results</h3>
+    {% endif %} -->
+    {% if movie.platform %}
+    <table>
+        {% for key,value in movie.platform.items %}
+            <tr>
+                <td>
+                    <a href="{{key}}">{{value}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h3> No results </h3>
+    {% endif %}
+
+    <a href="{% url "main:user_wishlist" movie.id  %}" class="btn btn-light fw500" role="button" aria-disabled="true">Add to Wish List</a>
+    </br>
+    <a href="{% url "main:user_favlist" movie.id  %}" class="btn btn-light fw500" role="button" aria-disabled="true">Add to favourites List</a>
+    </br>
+    <a href="{% url "main:user_watchedlist" movie.id  %}" class="btn btn-light fw500" role="button" aria-disabled="true">Add to watched List</a>
+</body>
+</html>
